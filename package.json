@@ -1,0 +1,24 @@
+{
+  "name": "hello-ts",
+  "version": "0.0.1",
+  "description": "Introduction to TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otobrglez/hello-ts.git"
+  },
+  "keywords": [
+    "TypeScript"
+  ],
+  "author": "Oto Brglez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otobrglez/hello-ts/issues"
+  },
+  "homepage": "https://github.com/otobrglez/hello-ts#readme",
+  "packages": {
+  }
+}
