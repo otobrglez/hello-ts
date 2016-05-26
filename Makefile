@@ -1,0 +1,13 @@
+.PHONY: clean build watch
+
+build:
+	tsc -p .
+
+rebuild: clean build
+
+watch:
+	tsc -w -p .
+
+clean:
+	rm -rf build/*.js build/*.map
+	rm -rf *.js *.map

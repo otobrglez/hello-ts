@@ -18,3 +18,10 @@ By [Oto Brglez](https://github.com/otobrglez) for [Slovenia Ruby User Group Meet
 
 - This repository contains several examples and experiments to demonstrate the power of TypeScript.
 - Feel free to use, re-use etc,...
+
+## Resources
+
+- https://www.typescriptlang.org/
+- https://learnxinyminutes.com/docs/typescript/
+- https://github.com/TypeStrong/ts-node
+- https://github.com/typings/typings
