@@ -3,6 +3,9 @@
 build:
 	tsc -p .
 
+install-dependencies:
+	npm install && typings install
+
 rebuild: clean build
 
 watch:
