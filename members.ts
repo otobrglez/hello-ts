@@ -2,14 +2,18 @@ import _ = require("lodash");
 
 interface Member {
   firstName:any
+  bornOn?:number
 }
 
 class Admin implements Member {
-  public firstName:string;
+  public bornOn:number;
 
-  constructor(firstName:string,
-              public lastName:string) {
-    this.firstName = firstName;
+  constructor(public firstName:string,
+              public lastName:string,
+              bornOn?:number) {
+    if (bornOn) {
+      this.bornOn = bornOn;
+    }
   }
 }
 
@@ -24,8 +28,12 @@ class Guest implements Member {
 class List<T> {
   elements:Array<T>;
 
-  constructor() {
-    this.elements = [];
+  constructor(initialMembers?:Array<T>) {
+    if (initialMembers) {
+      this.elements = initialMembers;
+    } else {
+      this.elements = [];
+    }
   }
 
   add(element:T) {
@@ -35,19 +43,40 @@ class List<T> {
   all():Array<T> {
     return this.elements;
   }
+
+  oldest():T {
+    return _.minBy(this.elements, 'bornOn');
+  }
+
+  youngest():T {
+    return _.maxBy(this.elements, 'bornOn');
+  }
 }
 
-let me = new Admin("Oto", "Brglez");
-let miha = new Admin("Miha", "Rekar");
-let miha_other = new Guest("Miha M.");
+/*
+ * Usage
+ * */
 
-var members:List<Member> = new List<Member>();
-members.add(me);
-members.add(miha);
-members.add(miha_other);
-members.add(null);
+let me = new Admin('Oto', 'Brglez', 1987);
+let miha = new Admin('Miha', 'Rekar', 1988);
+let marko = new Guest('Marko');
+let arto = new Guest('Arto');
 
+/* New List of Members */
+let members:List<Member> = new List<Member>([me, miha, marko, arto]);
 
-var firstNames = members.all().map((m) => m.firstName);
+/* Get first names */
+let firstNames = members.all().map((m) => m.firstName);
+console.log('First names', firstNames);
 
-console.log(_.maxBy(members.all(), 'firstName'));
+/* Get all admins */
+let admins = members.all().filter((m) => m instanceof Admin);
+console.log('Admins', admins);
+
+/* Get youngest member */
+console.log('Youngest', members.youngest().firstName);
+
+/* Fancy loops */
+for (let m of members.all()) {
+  console.log(m.firstName)
+}
